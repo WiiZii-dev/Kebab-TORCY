@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Actualités — Kebab torcy</title>
+<link rel="icon" href="assets/kebab-torcy.webp" type="image/webp" />
+<link rel="apple-touch-icon" href="assets/kebab-torcy.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+@font-face {
+	font-family: "Thunder Bold";
+	font-display: swap;
+	src: url("https://berliner-do.com/wp-content/uploads/et-fonts/Thunder-BoldLC.otf") format("opentype");
+}
+:root {
+	--red: #F58220;
+	--yellow: #000000;
+	--beige: #e9d7b5;
+	--navy: #E8481A;
+	--kt-orange-filter: brightness(0) saturate(100%) invert(58%) sepia(92%) saturate(4200%) hue-rotate(358deg) brightness(106%) contrast(95%);
+}
+* { box-sizing: border-box; }
+body {
+	margin: 0;
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+	background: #000000;
+	background-color: #000000;
+	color: var(--beige);
+	min-height: 100vh;
+}
+header {
+	background: var(--navy);
+	padding: 18px 8vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
+}
+header .brand {
+	color: #ffffff;
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-weight: 800;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: .06em;
+	font-size: clamp(20px, 2.5vw, 30px);
+}
+header nav { display: flex; gap: 18px; flex-wrap: wrap; }
+header nav a {
+	color: var(--beige);
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 13px;
+	letter-spacing: .05em;
+}
+header nav a:hover,
+header nav a.active { color: var(--yellow); }
+main {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 40px 8vw 88px;
+}
+.kt-separator {
+	width: 100vw;
+	max-width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	line-height: 0;
+}
+.kt-separator img {
+	display: block;
+	width: 100%;
+	height: auto;
+	filter: var(--kt-orange-filter);
+}
+.kt-separator--top {
+	margin-bottom: 28px;
+}
+.kt-separator--bottom {
+	margin-top: 36px;
+	margin-bottom: 8px;
+}
+.hero { text-align: center; margin-bottom: 36px; }
+h1 {
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-size: clamp(36px, 6vw, 64px);
+	text-transform: uppercase;
+	margin: 0 0 10px;
+	color: var(--red);
+	line-height: .95;
+}
+.intro {
+	color: var(--beige);
+	font-size: 17px;
+	line-height: 1.6;
+	max-width: 560px;
+	margin: 0 auto;
+	opacity: .92;
+}
+.section-title {
+	margin: 0 0 22px;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: var(--red);
+	letter-spacing: .12em;
+	font-weight: 800;
+	text-align: center;
+}
+.social-cta {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 12px;
+	margin-bottom: 36px;
+}
+.social-cta a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 22px;
+	border-radius: 50px;
+	font-weight: 800;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 12px;
+	letter-spacing: .05em;
+	transition: filter .2s ease, transform .2s ease;
+}
+.social-cta a:hover {
+	filter: brightness(1.06);
+	transform: translateY(-1px);
+}
+.social-cta .insta {
+	background: linear-gradient(45deg, #f77737, #e1306c, #c13584);
+	color: #fff;
+}
+.social-cta .fb {
+	background: #1877f2;
+	color: #fff;
+}
+.press-card {
+	max-width: 480px;
+	margin: 0 auto 40px;
+	background: var(--beige);
+	border-radius: 20px;
+	padding: 22px 22px 18px;
+	border: 2px solid rgba(245, 130, 32, .12);
+	box-shadow: 0 12px 28px rgba(232, 72, 26, .1);
+}
+.press-card h2 {
+	margin: 0 0 6px;
+	font-size: 18px;
+	color: var(--red);
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	line-height: 1.2;
+}
+.press-card .press-meta {
+	margin: 0 0 14px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	color: var(--navy);
+	opacity: .7;
+}
+.press-card figure {
+	margin: 0;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 2px solid rgba(232, 72, 26, .08);
+	background: #fff;
+}
+.press-card img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 360px;
+	object-fit: contain;
+	object-position: top center;
+}
+.press-card figcaption {
+	margin-top: 12px;
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--navy);
+	opacity: .85;
+}
+#kt-reviews .kt-reviews-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 22px;
+}
+#kt-reviews .kt-review-card {
+	background: var(--beige);
+	border-radius: 18px;
+	overflow: hidden;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, .12);
+	display: flex;
+	flex-direction: column;
+	border: 2px solid rgba(245, 130, 32, .1);
+}
+#kt-reviews .kt-review-photo {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	background: var(--navy);
+}
+#kt-reviews .kt-review-photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+#kt-reviews .kt-review-body {
+	padding: 18px 20px 20px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+#kt-reviews .kt-review-stars {
+	color: var(--yellow);
+	font-size: 18px;
+	letter-spacing: 2px;
+}
+#kt-reviews .kt-review-text {
+	margin: 0;
+	color: var(--red);
+	font-size: 14px;
+	line-height: 1.55;
+	font-weight: 500;
+}
+#kt-reviews .kt-review-author {
+	margin: 0;
+	color: var(--navy);
+	font-size: 12px;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+}
+.back-wrap { text-align: center; margin-top: 40px; }
+.back {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--red);
+	font-weight: 800;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: .06em;
+	font-size: 13px;
+	padding: 12px 22px;
+	border-radius: 50px;
+	background: rgba(255, 255, 255, .35);
+	border: 2px solid rgba(245, 130, 32, .25);
+}
+.back:hover {
+	background: var(--beige);
+	border-color: var(--red);
+}
+@media (max-width: 980px) {
+	#kt-reviews .kt-reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+	#kt-reviews .kt-reviews-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html">Kebab torcy</a>
+<nav>
+<a href="index.html#concept">Concept</a>
+<a href="menu.html">Menu</a>
+<a href="horaires.html">Horaires</a>
+<a href="actualites.html" class="active">Actualités</a>
+</nav>
+</header>
+<main>
+<div class="hero">
+<h1>Actualités</h1>
+<p class="intro">Suivez kebab torcy : avis clients, nouveautés et coulisses du restaurant.</p>
+</div>
+<div class="kt-separator kt-separator--top" aria-hidden="true">
+<img src="https://berliner-do.com/wp-content/uploads/2026/06/Berliner_separateur_top_bleu_2-scaled.webp" alt="" width="2560" height="381" loading="lazy" decoding="async" />
+</div>
+<div class="social-cta">
+<a class="insta" href="https://www.instagram.com/kebab_torcy/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<a class="fb" href="https://www.facebook.com/KebabPizzeriaDeTorcy/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Facebook</a>
+</div>
+<article class="press-card">
+<h2>Le kebab cartonne en ville</h2>
+<p class="press-meta">Journal des Ardennes</p>
+<figure>
+<img src="assets/actualite-journal-sedan.jpg" alt="Article du Journal des Ardennes sur kebab torcy à Sedan" width="800" height="600" loading="lazy" decoding="async" />
+<figcaption>Kebab torcy à la une du Journal des Ardennes.</figcaption>
+</figure>
+</article>
+<h2 class="section-title">Avis clients</h2>
+<section id="kt-reviews" aria-label="Avis clients">
+<div class="kt-reviews-grid">
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-1.jpg" alt="Bowl salade thon kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Bowl frais et coloré, parfait pour l'été. Les légumes sont croquants et le thon est généreux. »</p>
+<p class="kt-review-author">Sarah M.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-2.jpg" alt="Assiette kebab kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Une assiette complète incroyable : viande fondante, frites croustillantes et salade ultra fraîche. »</p>
+<p class="kt-review-author">Karim B.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-3.jpg" alt="Wrap grillé kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Le wrap gruyère fondant est un régal. Accompagné de frites maison, c'est mon combo préféré. »</p>
+<p class="kt-review-author">Julie L.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-4.jpg" alt="Ailes de poulet kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Des ailes de poulet croustillantes et bien assaisonnées. Les sauces maison sont top. »</p>
+<p class="kt-review-author">Mehdi T.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-5.jpg" alt="Assiette kebab sauce kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Portion XL, viande tendre et sauce au choix parfaite. Je recommande à 100 %. »</p>
+<p class="kt-review-author">Lucas D.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-6.jpg" alt="Tenders poulet kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Les tenders sont dorés à souhait. L'assiette est bien garnie, on ne repart jamais affamés. »</p>
+<p class="kt-review-author">Amina K.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-7.jpg" alt="Bowl frites viande kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Le bowl frites-viande-sauce est une tuerie. L'original à Torcy, rien à redire. »</p>
+<p class="kt-review-author">Thomas R.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-8.jpg" alt="Sélection plats kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Toujours la même qualité que ce soit kebab, wrap ou burger. Toute la famille est conquis. »</p>
+<p class="kt-review-author">Nina P.</p>
+</div>
+</article>
+<article class="kt-review-card">
+<div class="kt-review-photo">
+<img loading="lazy" decoding="async" src="assets/avis/avis-9.jpg" alt="Salade poulet croustillant kebab torcy">
+</div>
+<div class="kt-review-body">
+<div class="kt-review-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+<p class="kt-review-text">« Salade poulet croustillante, fraîche et bien assaisonnée. Idéal pour un repas léger mais copieux. »</p>
+<p class="kt-review-author">Hugo S.</p>
+</div>
+</article>
+</div>
+</section>
+<div class="kt-separator kt-separator--bottom" aria-hidden="true">
+<img src="https://berliner-do.com/wp-content/uploads/2026/06/Berliner_separateur_bot_bleu-scaled.webp" alt="" width="2560" height="343" loading="lazy" decoding="async" />
+</div>
+<div class="back-wrap">
+<a class="back" href="index.html">← Retour à l'accueil</a>
+</div>
+</main>
+</body>
+</html>
