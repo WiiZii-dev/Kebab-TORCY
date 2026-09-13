@@ -868,7 +868,7 @@ html {
 	window.addEventListener('load', purgeThirdPartyWidgets);
 })();
 </script>
-<link rel="stylesheet" href="assets/mobile-nav.css" />
+<link rel="stylesheet" href="assets/mobile-nav.css?v=4" />
 </head>
 <body class="home et-tb-has-template et-tb-has-header et-tb-has-footer et_pb_button_helper_class et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db">
 <div id="order-topbar">
@@ -2579,11 +2579,15 @@ footer.et-l--footer .et_pb_divider_internal {
 			document.body.scrollTop || 0
 		);
 	}
+	function isMobileHeader() {
+		return window.matchMedia('(max-width: 980px)').matches;
+	}
 	function paintHeaderBar() {
 		var scrolled = getPageScrollY() > 20;
-		document.body.classList.toggle('header-scrolled', scrolled);
-		var color = scrolled ? '#000000' : 'transparent';
-		var shadow = scrolled ? '0 4px 16px rgba(0,0,0,.12)' : 'none';
+		var mobile = isMobileHeader();
+		document.body.classList.toggle('header-scrolled', scrolled && !mobile);
+		var color = (scrolled && !mobile) ? '#000000' : 'transparent';
+		var shadow = (scrolled && !mobile) ? '0 4px 16px rgba(0,0,0,.12)' : 'none';
 		document.querySelectorAll('.et_pb_section_0_tb_header').forEach(function (bar) {
 			bar.style.setProperty('background', color, 'important');
 			bar.style.setProperty('background-color', color, 'important');
@@ -2592,6 +2596,7 @@ footer.et-l--footer .et_pb_divider_internal {
 			bar.style.setProperty('position', 'fixed', 'important');
 			bar.style.setProperty('top', '56px', 'important');
 			bar.style.setProperty('z-index', '130000', 'important');
+			bar.style.setProperty('pointer-events', 'auto', 'important');
 		});
 	}
 	var headerPaintQueued = false;
@@ -2611,6 +2616,6 @@ footer.et-l--footer .et_pb_divider_internal {
 	window.setTimeout(paintHeaderBar, 1200);
 })();
 </script>
-<script src="assets/mobile-nav.js"></script>
+<script src="assets/mobile-nav.js?v=4"></script>
 </body>
 </html>

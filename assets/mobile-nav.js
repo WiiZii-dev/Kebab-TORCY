@@ -51,7 +51,17 @@
 		if (event.key === 'Escape') closeNav();
 	});
 
-	/* Accueil — canvas Divi + hamburger */
+	/* Accueil — liens menu section_0 (barre transparente) */
+	var homeMenu = document.querySelector('.et_pb_section_0_tb_header .et-menu.nav');
+	if (homeMenu) {
+		homeMenu.querySelectorAll('a[href]').forEach(function (link) {
+			bindClick(link, function (event) {
+				event.stopPropagation();
+			});
+		});
+	}
+
+	/* Accueil — canvas Divi (secours si présent) */
 	var canvas = document.getElementById('brl-mobile-canvas');
 	if (!canvas) return;
 
