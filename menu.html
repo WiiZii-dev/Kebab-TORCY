@@ -106,11 +106,109 @@ h1 {
 	border: 3px solid var(--red);
 	box-shadow: 0 18px 40px rgba(232, 72, 26, .18);
 	background: var(--beige);
+	position: relative;
+	cursor: zoom-in;
 }
 .menu-image img {
 	display: block;
 	width: 100%;
 	height: auto;
+	transition: transform .25s ease;
+}
+.menu-image:hover img {
+	transform: scale(1.015);
+}
+.menu-image-zoom-hint {
+	position: absolute;
+	right: 14px;
+	bottom: 14px;
+	padding: 8px 14px;
+	border-radius: 50px;
+	background: rgba(0, 0, 0, .72);
+	color: var(--beige);
+	font-size: 11px;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	pointer-events: none;
+}
+.menu-zoom-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, .92);
+	display: none;
+	flex-direction: column;
+}
+.menu-zoom-overlay.is-open {
+	display: flex;
+}
+.menu-zoom-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 14px 18px;
+	background: rgba(0, 0, 0, .55);
+	border-bottom: 1px solid rgba(245, 130, 32, .25);
+	flex-shrink: 0;
+}
+.menu-zoom-toolbar span {
+	color: var(--beige);
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+.menu-zoom-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.menu-zoom-actions button {
+	border: 2px solid var(--red);
+	background: rgba(245, 130, 32, .15);
+	color: var(--beige);
+	font-family: inherit;
+	font-size: 18px;
+	font-weight: 800;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+	line-height: 1;
+}
+.menu-zoom-actions button:hover {
+	background: var(--red);
+	color: #000;
+}
+.menu-zoom-close {
+	border-color: var(--beige);
+	background: transparent;
+	font-size: 22px;
+}
+.menu-zoom-stage {
+	flex: 1;
+	overflow: hidden;
+	touch-action: none;
+	cursor: grab;
+	position: relative;
+}
+.menu-zoom-stage.is-dragging {
+	cursor: grabbing;
+}
+.menu-zoom-stage img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	max-width: none;
+	max-height: none;
+	width: auto;
+	height: auto;
+	transform-origin: center center;
+	user-select: none;
+	-webkit-user-drag: none;
+	will-change: transform;
 }
 .menu-text-intro {
 	text-align: center;
@@ -390,13 +488,29 @@ h1 {
 </div>
 
 <section class="menu-images" aria-label="Carte menu en images">
-<figure class="menu-image">
+<figure class="menu-image" data-zoom-src="assets/menu-carte-principale.jpg" tabindex="0" role="button" aria-label="Agrandir la carte principale du menu">
 <img src="assets/menu-carte-principale.jpg" alt="Carte menu Kebab torcy — kebabs, burgers, tacos, assiettes et plus" width="1200" height="1600" loading="eager" decoding="async" />
+<span class="menu-image-zoom-hint">Cliquer pour zoomer</span>
 </figure>
-<figure class="menu-image">
+<figure class="menu-image" data-zoom-src="assets/menu-carte-desserts-boissons.jpg" tabindex="0" role="button" aria-label="Agrandir la carte desserts et boissons">
 <img src="assets/menu-carte-desserts-boissons.jpg" alt="Carte menu Kebab torcy — desserts, boissons, menu enfant et horaires" width="1200" height="1600" loading="lazy" decoding="async" />
+<span class="menu-image-zoom-hint">Cliquer pour zoomer</span>
 </figure>
 </section>
+<div class="menu-zoom-overlay" id="menu-zoom-overlay" hidden aria-hidden="true">
+<div class="menu-zoom-toolbar">
+<span id="menu-zoom-caption">Carte menu</span>
+<div class="menu-zoom-actions">
+<button type="button" id="menu-zoom-out" aria-label="Dézoomer">−</button>
+<button type="button" id="menu-zoom-reset" aria-label="Réinitialiser le zoom">⟲</button>
+<button type="button" id="menu-zoom-in" aria-label="Zoomer">+</button>
+<button type="button" class="menu-zoom-close" id="menu-zoom-close" aria-label="Fermer">×</button>
+</div>
+</div>
+<div class="menu-zoom-stage" id="menu-zoom-stage">
+<img id="menu-zoom-image" src="" alt="" />
+</div>
+</div>
 
 <div class="menu-text-intro">
 <h2>La carte en détail</h2>
@@ -836,5 +950,171 @@ h1 {
 <a class="back" href="index.html">← Retour à l'accueil</a>
 </div>
 </main>
+<script>
+(function () {
+	var overlay = document.getElementById("menu-zoom-overlay");
+	var stage = document.getElementById("menu-zoom-stage");
+	var img = document.getElementById("menu-zoom-image");
+	var caption = document.getElementById("menu-zoom-caption");
+	if (!overlay || !stage || !img) return;
+
+	var scale = 1;
+	var minScale = 1;
+	var maxScale = 4;
+	var posX = 0;
+	var posY = 0;
+	var dragging = false;
+	var startX = 0;
+	var startY = 0;
+	var originX = 0;
+	var originY = 0;
+
+	function clamp(value, min, max) {
+		return Math.min(max, Math.max(min, value));
+	}
+
+	function applyTransform() {
+		img.style.transform = "translate(calc(-50% + " + posX + "px), calc(-50% + " + posY + "px)) scale(" + scale + ")";
+	}
+
+	function fitImage() {
+		var sw = stage.clientWidth;
+		var sh = stage.clientHeight;
+		var iw = img.naturalWidth;
+		var ih = img.naturalHeight;
+		if (!iw || !ih) return;
+		var fit = Math.min(sw / iw, sh / ih, 1);
+		img.style.width = iw * fit + "px";
+		img.style.height = ih * fit + "px";
+		minScale = 1;
+		scale = 1;
+		posX = 0;
+		posY = 0;
+		applyTransform();
+	}
+
+	function openZoom(src, alt, label) {
+		img.src = src;
+		img.alt = alt || "Carte menu agrandie";
+		caption.textContent = label || "Carte menu";
+		overlay.hidden = false;
+		overlay.classList.add("is-open");
+		overlay.setAttribute("aria-hidden", "false");
+		document.body.style.overflow = "hidden";
+		if (img.complete) fitImage();
+		else img.onload = fitImage;
+	}
+
+	function closeZoom() {
+		overlay.classList.remove("is-open");
+		overlay.hidden = true;
+		overlay.setAttribute("aria-hidden", "true");
+		document.body.style.overflow = "";
+		img.src = "";
+	}
+
+	function zoomBy(delta, clientX, clientY) {
+		var prev = scale;
+		scale = clamp(scale + delta, minScale, maxScale);
+		if (scale === prev) return;
+		var rect = stage.getBoundingClientRect();
+		var cx = (clientX || rect.left + rect.width / 2) - (rect.left + rect.width / 2);
+		var cy = (clientY || rect.top + rect.height / 2) - (rect.top + rect.height / 2);
+		posX -= cx * (scale - prev) / scale;
+		posY -= cy * (scale - prev) / scale;
+		applyTransform();
+	}
+
+	document.querySelectorAll(".menu-image[data-zoom-src]").forEach(function (figure) {
+		function trigger() {
+			var thumb = figure.querySelector("img");
+			openZoom(
+				figure.getAttribute("data-zoom-src"),
+				thumb ? thumb.alt : "",
+				thumb ? thumb.alt.split("—")[0].trim() : "Carte menu"
+			);
+		}
+		figure.addEventListener("click", trigger);
+		figure.addEventListener("keydown", function (e) {
+			if (e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
+				trigger();
+			}
+		});
+	});
+
+	document.getElementById("menu-zoom-close").addEventListener("click", closeZoom);
+	document.getElementById("menu-zoom-in").addEventListener("click", function () { zoomBy(0.35); });
+	document.getElementById("menu-zoom-out").addEventListener("click", function () { zoomBy(-0.35); });
+	document.getElementById("menu-zoom-reset").addEventListener("click", fitImage);
+
+	overlay.addEventListener("click", function (e) {
+		if (e.target === overlay) closeZoom();
+	});
+
+	document.addEventListener("keydown", function (e) {
+		if (!overlay.classList.contains("is-open")) return;
+		if (e.key === "Escape") closeZoom();
+	});
+
+	stage.addEventListener("wheel", function (e) {
+		if (!overlay.classList.contains("is-open")) return;
+		e.preventDefault();
+		zoomBy(e.deltaY < 0 ? 0.15 : -0.15, e.clientX, e.clientY);
+	}, { passive: false });
+
+	stage.addEventListener("pointerdown", function (e) {
+		if (scale <= 1) return;
+		dragging = true;
+		startX = e.clientX;
+		startY = e.clientY;
+		originX = posX;
+		originY = posY;
+		stage.classList.add("is-dragging");
+		stage.setPointerCapture(e.pointerId);
+	});
+
+	stage.addEventListener("pointermove", function (e) {
+		if (!dragging) return;
+		posX = originX + (e.clientX - startX);
+		posY = originY + (e.clientY - startY);
+		applyTransform();
+	});
+
+	function endDrag(e) {
+		if (!dragging) return;
+		dragging = false;
+		stage.classList.remove("is-dragging");
+		try { stage.releasePointerCapture(e.pointerId); } catch (err) {}
+	}
+	stage.addEventListener("pointerup", endDrag);
+	stage.addEventListener("pointercancel", endDrag);
+
+	var pinchStart = 0;
+	var pinchScale = 1;
+	stage.addEventListener("touchstart", function (e) {
+		if (e.touches.length === 2) {
+			var dx = e.touches[0].clientX - e.touches[1].clientX;
+			var dy = e.touches[0].clientY - e.touches[1].clientY;
+			pinchStart = Math.hypot(dx, dy);
+			pinchScale = scale;
+		}
+	}, { passive: true });
+
+	stage.addEventListener("touchmove", function (e) {
+		if (e.touches.length !== 2 || !pinchStart) return;
+		e.preventDefault();
+		var dx = e.touches[0].clientX - e.touches[1].clientX;
+		var dy = e.touches[0].clientY - e.touches[1].clientY;
+		var distance = Math.hypot(dx, dy);
+		scale = clamp(pinchScale * (distance / pinchStart), minScale, maxScale);
+		applyTransform();
+	}, { passive: false });
+
+	window.addEventListener("resize", function () {
+		if (overlay.classList.contains("is-open")) fitImage();
+	});
+})();
+</script>
 </body>
 </html>
