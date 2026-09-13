@@ -351,11 +351,17 @@ h1 {
 	.day-row { grid-template-columns: 1fr; gap: 8px; }
 }
 </style>
+<link rel="stylesheet" href="assets/mobile-nav.css" />
 </head>
 <body>
-<header>
+<header class="kt-site-header">
 <a class="brand" href="index.html">Kebab torcy</a>
-<nav>
+<button type="button" class="kt-nav-toggle" aria-expanded="false" aria-controls="kt-nav-menu" aria-label="Ouvrir le menu">
+	<span class="kt-nav-toggle-bar"></span>
+	<span class="kt-nav-toggle-bar"></span>
+	<span class="kt-nav-toggle-bar"></span>
+</button>
+<nav id="kt-nav-menu">
 <a href="index.html#concept">Concept</a>
 <a href="menu.html">Menu</a>
 <a href="horaires.html">Horaires</a>
@@ -463,5 +469,6 @@ src="https://www.google.com/maps?q=8+Av.+des+Martyrs+de+la+R%C3%A9sistance,+0820
 <a class="back" href="index.html">← Retour à l'accueil</a>
 </div>
 </main>
+<script src="assets/mobile-nav.js"></script>
 </body>
 </html>

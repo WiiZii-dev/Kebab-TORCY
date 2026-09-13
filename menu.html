@@ -469,11 +469,17 @@ h1 {
 	.menu-nav { top: 0; }
 }
 </style>
+<link rel="stylesheet" href="assets/mobile-nav.css" />
 </head>
 <body>
-<header>
+<header class="kt-site-header">
 <a class="brand" href="index.html">Kebab torcy</a>
-<nav>
+<button type="button" class="kt-nav-toggle" aria-expanded="false" aria-controls="kt-nav-menu" aria-label="Ouvrir le menu">
+	<span class="kt-nav-toggle-bar"></span>
+	<span class="kt-nav-toggle-bar"></span>
+	<span class="kt-nav-toggle-bar"></span>
+</button>
+<nav id="kt-nav-menu">
 <a href="index.html#concept">Concept</a>
 <a href="menu.html">Menu</a>
 <a href="horaires.html">Horaires</a>
@@ -1116,5 +1122,6 @@ h1 {
 	});
 })();
 </script>
+<script src="assets/mobile-nav.js"></script>
 </body>
 </html>
