@@ -3,27 +3,356 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Allergènes — Berliner</title>
+<title>Allergènes — Torcy Kebab Sedan</title>
+<meta name="description" content="Informations sur les allergènes présents dans la carte de Torcy Kebab Sedan à Sedan." />
 <link rel="icon" href="assets/kebab-torcy.webp" type="image/webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-body { margin: 0; font-family: Montserrat, Helvetica, Arial, sans-serif; background: #e9d7b5; color: #F58220; }
-header { background: #e9d7b5; padding: 24px 8vw; }
+body { margin: 0; font-family: Montserrat, Helvetica, Arial, sans-serif; background: #e9d7b5; color: #1a1a1a; }
+header { background: #e9d7b5; padding: 24px 8vw; border-bottom: 2px solid rgba(245, 130, 32, 0.35); }
 header a { color: #F58220; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: .06em; }
-main { max-width: 860px; margin: 0 auto; padding: 40px 8vw 80px; }
-h1 { font-size: clamp(32px, 5vw, 56px); text-transform: uppercase; margin: 0 0 24px; }
-p, li { line-height: 1.6; }
+main { max-width: 960px; margin: 0 auto; padding: 40px 8vw 80px; }
+h1 { font-size: clamp(32px, 5vw, 56px); text-transform: uppercase; margin: 0 0 12px; color: #000; }
+.lead { color: #444; margin: 0 0 32px; line-height: 1.6; }
+h2 { font-size: clamp(18px, 3vw, 24px); text-transform: uppercase; margin: 36px 0 12px; color: #000; letter-spacing: .04em; }
+h3 { font-size: 16px; margin: 20px 0 8px; color: #000; }
+p, li { line-height: 1.7; margin: 0 0 12px; }
+ul { margin: 0 0 16px; padding-left: 1.2rem; }
 a { color: #F58220; }
+.warning { background: rgba(232, 72, 26, 0.12); border-left: 4px solid #E8481A; padding: 16px 20px; margin: 20px 0 28px; }
+.info-block { background: rgba(255, 255, 255, 0.45); border-left: 4px solid #F58220; padding: 16px 20px; margin: 16px 0 24px; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+th, td { border: 1px solid rgba(0, 0, 0, 0.12); padding: 9px 10px; text-align: left; vertical-align: top; }
+th { background: rgba(255, 255, 255, 0.55); font-size: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; }
+.legend span { display: inline-block; background: rgba(255,255,255,.55); border: 1px solid rgba(0,0,0,.1); border-radius: 999px; padding: 5px 10px; font-size: 11px; font-weight: 700; }
+.yes { color: #000; font-weight: 800; }
+.maybe { color: #666; font-weight: 700; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+footer-links { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0, 0, 0, 0.12); }
 </style>
 </head>
 <body>
 <header><a href="index.html">← Retour à l'accueil</a></header>
 <main>
 <h1>Allergènes</h1>
-<p>Les recettes Berliner peuvent contenir du gluten, des produits laitiers, des œufs, du sésame, du soja, des fruits à coque ou de la moutarde selon les sauces et garnitures.</p>
-<p>En cas d’allergie, demandez la carte des allergènes en restaurant.</p>
-<p><a href="menu.html">Voir le menu</a></p>
+<p class="lead">Conformément au Règlement (UE) n°&nbsp;1169/2011, les informations ci-dessous concernent les <strong>14 allergènes majeurs</strong> devant être signalés au consommateur dans le cadre de l'activité de restauration de <strong>Torcy Kebab Sedan</strong> (Kebab de Torcy).</p>
+
+<div class="warning">
+<p><strong>Information importante</strong></p>
+<p>Les recettes, sauces et garnitures peuvent évoluer. Les valeurs indiquées sont données <strong>à titre indicatif</strong> sur la base de la carte actuelle et des ingrédients habituellement utilisés en restauration rapide.</p>
+<p>En cas d'allergie ou d'intolérance alimentaire, <strong>informez impérativement notre équipe avant toute commande</strong>. Une fiche allergènes détaillée et à jour est disponible sur demande au comptoir.</p>
+<p>Des <strong>traces involontaires</strong> d'allergènes peuvent subsister malgré nos précautions (salle, plan de travail, friteuse, broche, ustensiles communs).</p>
+</div>
+
+<h2>1. Les 14 allergènes réglementaires</h2>
+<ul>
+<li><strong>Gluten</strong> — blé, seigle, orge, avoine, épeautre, kamut et produits dérivés</li>
+<li><strong>Crustacés</strong> et produits à base de crustacés</li>
+<li><strong>Œufs</strong> et produits à base d'œufs</li>
+<li><strong>Poisson</strong> et produits à base de poisson</li>
+<li><strong>Arachides</strong> et produits à base d'arachides</li>
+<li><strong>Soja</strong> et produits à base de soja</li>
+<li><strong>Lait</strong> et produits à base de lait (y compris lactose)</li>
+<li><strong>Fruits à coque</strong> — amandes, noisettes, noix, noix de cajou, noix de pécan, noix du Brésil, pistaches, noix de macadamia</li>
+<li><strong>Céleri</strong> et produits à base de céleri</li>
+<li><strong>Moutarde</strong> et produits à base de moutarde</li>
+<li><strong>Graines de sésame</strong> et produits à base de sésame</li>
+<li><strong>Anhydride sulfureux et sulfites</strong> (concentration &gt; 10 mg/kg ou 10 mg/l)</li>
+<li><strong>Lupin</strong> et produits à base de lupin</li>
+<li><strong>Mollusques</strong> et produits à base de mollusques</li>
+</ul>
+
+<h2>2. Allergènes par ingrédient ou composant</h2>
+<p>Ce tableau recense les allergènes <strong>présents</strong> dans les principaux ingrédients utilisés dans notre carte. La mention « traces possibles » signifie une présence involontaire ou variable selon le fournisseur.</p>
+
+<div class="legend">
+<span><strong>●</strong> Présent</span>
+<span><strong>○</strong> Traces possibles</span>
+<span><strong>—</strong> Absent habituellement</span>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Ingrédient / composant</th>
+<th>Gluten</th>
+<th>Œuf</th>
+<th>Lait</th>
+<th>Poisson</th>
+<th>Soja</th>
+<th>Moutarde</th>
+<th>Sésame</th>
+<th>F. à coque</th>
+<th>Sulfites</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pain kebab / baguette / pain burger / galette tacos / durum</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Viande kebab (broche veau/dinde)</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td class="maybe">○</td>
+</tr>
+<tr>
+<td>Steak haché, steak boucher, kefta, merguez</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+</tr>
+<tr>
+<td>Poulet pané, tenders, nuggets, wings, cordon bleu, maxicanto</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Filet de colin pané (Fish Burger)</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Lahmacun (pizza turque)</td>
+<td class="yes">●</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Fromages (cheddar, raclette, chèvre, Boursin, feta, emmental, Vache qui rit)</td>
+<td>—</td>
+<td>—</td>
+<td class="yes">●</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Œuf, bacon, fromage blanc</td>
+<td>—</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mayonnaise, andalouse, algérienne, samouraï, sauce blanche kebab</td>
+<td>—</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+</tr>
+<tr>
+<td>Moutarde, sauce burger, sauce césar</td>
+<td class="maybe">○</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td class="yes">●</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+</tr>
+<tr>
+<td>Sauce fromagère (tacos), mozzarella sticks, cheese jalapenos</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td class="yes">●</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Croûtons, boulgour, galette de pomme de terre</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Salade César (croûtons, parmesan, sauce césar, poulet pané)</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Milkshake, sundae, tiramisu, cheesecake, tarte Daim</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td class="yes">●</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td>—</td>
+<td>—</td>
+<td class="yes">●</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Toppings Kinder Bueno, Nutella, Oreo, speculoos, pistache</td>
+<td class="yes">●</td>
+<td class="maybe">○</td>
+<td class="yes">●</td>
+<td>—</td>
+<td class="yes">●</td>
+<td>—</td>
+<td class="maybe">○</td>
+<td class="yes">●</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ketchup, vinaigre balsamique, cornichons, boissons</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td class="maybe">○</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>3. Synthèse par catégorie du menu</h2>
+
+<h3>Kebabs &amp; durum</h3>
+<p><strong>Allergènes fréquents :</strong> gluten (pain, durum), lait (fromages, sauce blanche), œuf (sauces), moutarde et sésame (sauces, pain selon recette).</p>
+<p>Le <strong>Kebab Berliner</strong> contient fromage blanc (lait) et crudités. Le <strong>Kebab du chef</strong> contient œuf, cheddar (lait) et bacon.</p>
+
+<h3>Burgers &amp; américains</h3>
+<p><strong>Allergènes fréquents :</strong> gluten (pain), lait (cheddar, raclette), œuf (sauces, Suprême), moutarde (sauces). Le <strong>Fish Burger</strong> contient du poisson et du gluten. Les produits panés contiennent gluten, œuf et souvent lait.</p>
+
+<h3>Tacos, bowls &amp; paninis</h3>
+<p><strong>Allergènes fréquents :</strong> gluten (galette, panini), lait (sauce fromagère, fromages), œuf (sauces). Composition variable selon viandes et suppléments choisis.</p>
+
+<h3>Assiettes &amp; tex mex</h3>
+<p><strong>Allergènes fréquents :</strong> gluten (panure, boulgour), lait (fromages, mozza sticks, cheese jalapenos), œuf (panure, assiette chef). Frites : absence habituelle d'allergène déclaré, avec traces possibles selon friteuse partagée.</p>
+
+<h3>Salades</h3>
+<p>La <strong>César</strong> : gluten, œuf, lait, poisson possible (anchois dans la sauce). Salade kebab / végé : lait (fromage blanc), sans gluten si sans croûtons ni pain.</p>
+
+<h3>Desserts &amp; boissons</h3>
+<p><strong>Allergènes fréquents :</strong> lait, gluten, œuf, fruits à coque (tiramisu, toppings chocolatés), soja (préparations industrielles). Vérifier le topping choisi pour chaque milkshake ou sundae.</p>
+
+<h2>4. Sauces et suppléments</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Sauce / supplément</th>
+<th>Allergènes principaux</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Mayonnaise, andalouse, algérienne, samouraï</td><td>Œuf (moutarde possible selon recette)</td></tr>
+<tr><td>Moutarde</td><td>Moutarde</td></tr>
+<tr><td>Blanche kebab, blanche truffe, mayo truffe</td><td>Œuf, lait possible</td></tr>
+<tr><td>Sauce burger, biggy, smash, beef fumée</td><td>Moutarde, œuf, lait, gluten possible</td></tr>
+<tr><td>Harissa, algérienne, chili thaï</td><td>Moutarde ou sulfites possibles selon préparation</td></tr>
+<tr><td>Cheddar, raclette, chèvre, Boursin, Vache qui rit</td><td>Lait</td></tr>
+<tr><td>Œuf, bacon</td><td>Œuf ; bacon : sulfites possibles</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>5. Risque de contamination croisée</h2>
+<p>Dans notre cuisine de restauration rapide, les allergènes suivants peuvent entrer en contact involontaire entre préparations :</p>
+<ul>
+<li><strong>Gluten</strong> — pains, panures, galette tacos, friteuse partagée ;</li>
+<li><strong>Lait</strong> — fromages, sauce fromagère, plan de travail ;</li>
+<li><strong>Œuf</strong> — sauces, panures ;</li>
+<li><strong>Graines de sésame</strong> — pains, garnitures ;</li>
+<li><strong>Fruits à coque</strong> — desserts et toppings.</li>
+</ul>
+<p>Nous ne garantissons pas l'absence totale d'un allergène sur une préparation lorsque la cuisine traite ces produits simultanément.</p>
+
+<h2>6. Que faire en cas d'allergie ?</h2>
+<div class="info-block">
+<p><strong>Avant de commander</strong>, signalez votre allergie ou intolérance à l'équipe en caisse ou en cuisine.</p>
+<p><strong>Demandez</strong> la fiche allergènes papier complète, à jour et conforme à nos produits fournisseurs du moment.</p>
+<p><strong>Précisez</strong> les ingrédients à exclure (pain, sauce, fromage, frites, etc.).</p>
+<p><strong>En cas de doute</strong>, abstenez-vous de consommer le produit concerné.</p>
+</div>
+<p>Contact : <a href="tel:+33324279745">03 24 27 97 45</a> — 8 avenue des Martyrs de la Résistance, 08200 Sedan</p>
+
+<h2>7. Rappel sanitaire</h2>
+<p>Pour votre santé, mangez au moins cinq fruits et légumes par jour : <a href="https://www.mangerbouger.fr" target="_blank" rel="noopener noreferrer">www.mangerbouger.fr</a></p>
+
+<p class="footer-links"><a href="menu.html">Voir le menu</a> · <a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="politique-de-confidentialite.html">Politique de confidentialité</a></p>
+<p><em>Dernière mise à jour : septembre 2025 — document indicatif, non contractuel.</em></p>
 </main>
 </body>
 </html>
