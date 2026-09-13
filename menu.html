@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Menu — Kebab torcy</title>
+<link rel="icon" href="assets/kebab-torcy.webp" type="image/webp" />
+<link rel="apple-touch-icon" href="assets/kebab-torcy.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+@font-face {
+	font-family: "Thunder Bold";
+	font-display: swap;
+	src: url("assets/fonts/Thunder-BoldLC.otf") format("opentype");
+}
+:root {
+	--red: #F58220;
+	--yellow: #000000;
+	--beige: #e9d7b5;
+	--navy: #E8481A;
+}
+* { box-sizing: border-box; }
+body {
+	margin: 0;
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+	background: #000000;
+	color: var(--beige);
+	min-height: 100vh;
+}
+header {
+	background: var(--navy);
+	padding: 18px 8vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
+}
+header .brand {
+	color: #ffffff;
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-weight: 800;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: .06em;
+	font-size: clamp(20px, 2.5vw, 30px);
+}
+header nav { display: flex; gap: 18px; flex-wrap: wrap; }
+header nav a {
+	color: var(--beige);
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 13px;
+	letter-spacing: .05em;
+}
+header nav a:hover { color: var(--yellow); }
+main {
+	max-width: 920px;
+	margin: 0 auto;
+	padding: 40px 8vw 88px;
+}
+.hero { text-align: center; margin-bottom: 36px; }
+.hero-badge {
+	display: inline-block;
+	background: var(--red);
+	color: var(--yellow);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	padding: 10px 24px;
+	border-radius: 50px;
+	font-size: clamp(14px, 2vw, 18px);
+	margin-bottom: 14px;
+}
+h1 {
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-size: clamp(36px, 6vw, 64px);
+	text-transform: uppercase;
+	margin: 0 0 10px;
+	color: var(--red);
+	line-height: .95;
+	letter-spacing: .02em;
+}
+.intro {
+	color: var(--beige);
+	font-size: 17px;
+	line-height: 1.6;
+	max-width: 620px;
+	margin: 0 auto;
+	opacity: .92;
+}
+.menu-images {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 28px;
+	margin-bottom: 56px;
+}
+.menu-image {
+	margin: 0;
+	border-radius: 24px;
+	overflow: hidden;
+	border: 3px solid var(--red);
+	box-shadow: 0 18px 40px rgba(232, 72, 26, .18);
+	background: var(--beige);
+}
+.menu-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.menu-text-intro {
+	text-align: center;
+	margin: 0 0 28px;
+}
+.menu-text-intro h2 {
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-size: clamp(24px, 4vw, 36px);
+	text-transform: uppercase;
+	color: var(--red);
+	margin: 0 0 8px;
+	letter-spacing: .04em;
+}
+.menu-text-intro p {
+	margin: 0;
+	font-size: 14px;
+	opacity: .75;
+	font-weight: 600;
+}
+.menu-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px;
+	margin-bottom: 36px;
+	position: sticky;
+	top: 12px;
+	z-index: 5;
+	padding: 10px 0;
+}
+.menu-nav a {
+	display: inline-block;
+	padding: 8px 14px;
+	border-radius: 50px;
+	font-size: 11px;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	text-decoration: none;
+	color: var(--beige);
+	background: rgba(255, 255, 255, .06);
+	border: 1px solid rgba(245, 130, 32, .25);
+	transition: background .2s, color .2s, border-color .2s;
+}
+.menu-nav a:hover,
+.menu-nav a:focus {
+	background: var(--red);
+	color: var(--yellow);
+	border-color: var(--red);
+}
+.menu-catalog {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+.cat {
+	scroll-margin-top: 80px;
+	background: linear-gradient(145deg, rgba(232, 72, 26, .08), rgba(255, 255, 255, .02));
+	border: 1px solid rgba(245, 130, 32, .22);
+	border-radius: 24px;
+	padding: 28px 26px 24px;
+}
+.cat-head {
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid rgba(245, 130, 32, .18);
+}
+.cat-head h2 {
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-size: clamp(22px, 3.5vw, 30px);
+	text-transform: uppercase;
+	color: var(--red);
+	margin: 0 0 6px;
+	letter-spacing: .04em;
+	line-height: 1;
+}
+.cat-head p {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.55;
+	opacity: .78;
+	font-weight: 500;
+}
+.formula-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 18px;
+}
+.formula {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 14px;
+	border-radius: 50px;
+	background: rgba(0, 0, 0, .35);
+	border: 1px solid rgba(245, 130, 32, .2);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+.formula strong {
+	color: var(--red);
+	font-weight: 900;
+	font-size: 13px;
+}
+.dish-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+.dish {
+	padding: 14px 0;
+	border-bottom: 1px solid rgba(233, 215, 181, .08);
+}
+.dish:last-child { border-bottom: 0; padding-bottom: 0; }
+.dish-line {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 16px;
+	align-items: baseline;
+}
+.dish-name {
+	font-weight: 800;
+	font-size: 15px;
+	color: #ffffff;
+	line-height: 1.3;
+}
+.dish-price {
+	font-weight: 900;
+	font-size: 15px;
+	color: var(--red);
+	white-space: nowrap;
+	text-align: right;
+}
+.dish-prices {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 2px;
+}
+.dish-prices span {
+	font-weight: 800;
+	font-size: 12px;
+	color: var(--red);
+	white-space: nowrap;
+}
+.dish-prices span small {
+	font-weight: 600;
+	font-size: 10px;
+	color: rgba(233, 215, 181, .55);
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	margin-right: 4px;
+}
+.dish-desc {
+	margin: 5px 0 0;
+	font-size: 12px;
+	line-height: 1.55;
+	opacity: .72;
+	font-weight: 500;
+	max-width: 90%;
+}
+.dish-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin-top: 8px;
+}
+.dish-tag {
+	font-size: 10px;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	padding: 4px 10px;
+	border-radius: 50px;
+	background: rgba(245, 130, 32, .15);
+	color: var(--red);
+}
+.badge-new {
+	display: inline-block;
+	background: var(--red);
+	color: var(--yellow);
+	font-size: 9px;
+	font-weight: 900;
+	padding: 2px 8px;
+	border-radius: 50px;
+	vertical-align: middle;
+	margin-left: 8px;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+.cat-note {
+	margin-top: 16px;
+	padding: 12px 14px;
+	border-radius: 14px;
+	background: rgba(0, 0, 0, .28);
+	border-left: 3px solid var(--red);
+	font-size: 12px;
+	line-height: 1.55;
+	opacity: .85;
+	font-weight: 500;
+}
+.cat-sub {
+	margin-top: 22px;
+	padding-top: 20px;
+	border-top: 1px solid rgba(245, 130, 32, .15);
+}
+.cat-sub h3 {
+	margin: 0 0 12px;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: var(--red);
+	font-weight: 900;
+}
+.tag-cloud {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.tag-cloud span {
+	padding: 8px 14px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 700;
+	background: rgba(0, 0, 0, .3);
+	border: 1px solid rgba(245, 130, 32, .15);
+	color: var(--beige);
+}
+.back-wrap { text-align: center; margin-top: 48px; }
+.back {
+	display: inline-block;
+	color: var(--red);
+	font-weight: 800;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: .06em;
+	font-size: 13px;
+	padding: 12px 22px;
+	border-radius: 50px;
+	background: rgba(255, 255, 255, .08);
+	border: 2px solid rgba(245, 130, 32, .25);
+}
+.back:hover {
+	background: var(--beige);
+	color: var(--navy);
+	border-color: var(--red);
+}
+@media (max-width: 600px) {
+	.cat { padding: 22px 18px 18px; }
+	.dish-line { grid-template-columns: 1fr; gap: 4px; }
+	.dish-price, .dish-prices { text-align: left; align-items: flex-start; }
+	.menu-nav { top: 0; }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html">Kebab torcy</a>
+<nav>
+<a href="index.html#concept">Concept</a>
+<a href="menu.html">Menu</a>
+<a href="horaires.html">Horaires</a>
+<a href="actualites.html">Actualités</a>
+</nav>
+</header>
+<main>
+<div class="hero">
+<span class="hero-badge">Sedan</span>
+<h1>Notre menu</h1>
+<p class="intro">Kebabs, burgers, tacos, bowls et plus — découvrez toute la carte de Kebab torcy.</p>
+</div>
+
+<section class="menu-images" aria-label="Carte menu en images">
+<figure class="menu-image">
+<img src="assets/menu-carte-principale.jpg" alt="Carte menu Kebab torcy — kebabs, burgers, tacos, assiettes et plus" width="1200" height="1600" loading="eager" decoding="async" />
+</figure>
+<figure class="menu-image">
+<img src="assets/menu-carte-desserts-boissons.jpg" alt="Carte menu Kebab torcy — desserts, boissons, menu enfant et horaires" width="1200" height="1600" loading="lazy" decoding="async" />
+</figure>
+</section>
+
+<div class="menu-text-intro">
+<h2>La carte en détail</h2>
+<p>Tous les prix et formules, classés par catégorie</p>
+</div>
+
+<nav class="menu-nav" aria-label="Catégories du menu">
+<a href="#burgers">Burgers</a>
+<a href="#kebabs">Kebabs</a>
+<a href="#americains">Américains</a>
+<a href="#assiettes">Assiettes</a>
+<a href="#tacos">Tacos &amp; bowls</a>
+<a href="#panini">Panini</a>
+<a href="#salades">Salades</a>
+<a href="#extras">Extras</a>
+<a href="#desserts">Desserts</a>
+<a href="#boissons">Boissons</a>
+</nav>
+
+<div class="menu-catalog">
+
+<article class="cat" id="burgers">
+<header class="cat-head">
+<h2>Burgers</h2>
+<p>Classiques et gourmets — frites maison et boisson en formule menu</p>
+</header>
+
+<div class="formula-bar">
+<span class="formula">Classique seul <strong>5,50 €</strong></span>
+<span class="formula">Classique menu <strong>8,50 €</strong></span>
+</div>
+
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Cheeseburger</span>
+</div>
+<p class="dish-desc">Steak 80 g</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Fish Burger</span>
+</div>
+<p class="dish-desc">Filet de colin pané, sauce fish</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Chicken Burger</span>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Bicky Burger</span>
+</div>
+<p class="dish-desc">Maxicanto</p>
+</li>
+</ul>
+
+<div class="cat-sub">
+<h3>Gourmet</h3>
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Bap's</span>
+<div class="dish-prices"><span><small>Seul</small>8,50 €</span><span><small>Menu</small>11,50 €</span></div>
+</div>
+<p class="dish-desc">Steak boucher 125 g, cheddar original, cornichons, crudités, sauce au choix</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Farmer's</span>
+<div class="dish-prices"><span><small>Seul</small>8,50 €</span><span><small>Menu</small>11,50 €</span></div>
+</div>
+<p class="dish-desc">Filet de poulet pané 125 g, cheddar original, cornichons, crudités, sauce au choix</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Suprême</span>
+<div class="dish-prices"><span><small>Seul</small>9,50 €</span><span><small>Menu</small>12,50 €</span></div>
+</div>
+<p class="dish-desc">Steak boucher 125 g, cheddar, œuf, bacon, cornichons, crudités, sauce au choix</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Campagnard</span>
+<div class="dish-prices"><span><small>Seul</small>9,50 €</span><span><small>Menu</small>12,50 €</span></div>
+</div>
+<p class="dish-desc">Filet de poulet pané 125 g, raclette, galette de pomme de terre, cornichons, bacon</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Savoyard<span class="badge-new">Nouveau</span></span>
+<div class="dish-prices"><span><small>Seul</small>9,50 €</span><span><small>Menu</small>12,50 €</span></div>
+</div>
+<p class="dish-desc">Steak boucher 125 g, salade, tomates, oignons, cornichons, raclette, sauce burger</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Le Royal Big<span class="badge-new">Nouveau</span></span>
+<div class="dish-prices"><span><small>Seul</small>11,50 €</span><span><small>Menu</small>14,50 €</span></div>
+</div>
+<p class="dish-desc">Steak boucher 125 g, tenders, bacon, 2 cheddar, salade, tomates, oignons, cornichons</p>
+</li>
+</ul>
+</div>
+</article>
+
+<article class="cat" id="kebabs">
+<header class="cat-head">
+<h2>Kebabs</h2>
+<p>Pain maison, viande veau + dinde, frites fraîches maison</p>
+</header>
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Kebab traditionnel</span>
+<div class="dish-prices">
+<span><small>Seul</small>7 €</span>
+<span><small>Menu</small>10 €</span>
+</div>
+</div>
+<div class="dish-tags"><span class="dish-tag">+ Frites 8,50 €</span></div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Kebab durum (wrap)</span>
+<div class="dish-prices">
+<span><small>Seul</small>7 €</span>
+<span><small>Menu</small>10 €</span>
+</div>
+</div>
+<div class="dish-tags"><span class="dish-tag">+ Frites 8,50 €</span></div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Kebab du chef</span>
+<div class="dish-prices">
+<span><small>Seul</small>8,50 €</span>
+<span><small>Menu</small>11,50 €</span>
+</div>
+</div>
+<p class="dish-desc">Œuf, cheddar, bacon</p>
+<div class="dish-tags"><span class="dish-tag">+ Frites 10 €</span></div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Pizza turque (Lahmacun)</span>
+<span class="dish-price">8 €</span>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Kebab Berliner</span>
+<div class="dish-prices">
+<span><small>Seul</small>9 €</span>
+<span><small>Menu</small>12,50 €</span>
+</div>
+</div>
+<p class="dish-desc">Crudités, légumes grillés, carotte râpée, fromage blanc, chou rouge, balsamique grenade</p>
+</li>
+</ul>
+</article>
+
+<article class="cat" id="americains">
+<header class="cat-head">
+<h2>Américains &amp; Boursin</h2>
+<p>Pain baguette boulangerie, viande, crudité et sauce au choix</p>
+</header>
+
+<div class="formula-bar">
+<span class="formula">Américain seul <strong>7,50 €</strong></span>
+<span class="formula">+ Frites <strong>9 €</strong></span>
+<span class="formula">Menu <strong>10,50 €</strong></span>
+<span class="formula">Boursin seul <strong>8,50 €</strong></span>
+<span class="formula">Boursin menu <strong>11,50 €</strong></span>
+</div>
+
+<p class="cat-note">Américains — viandes : steak boucher 125 g, kefta maison, merguez (×2), tenders, poulet tikka.<br />Sandwichs Boursin — 1 viande, Boursin, œuf, bacon, cheddar. Viandes : kebab, maxicanto, cordon bleu, steak haché 90 g, et plus.</p>
+</article>
+
+<article class="cat" id="assiettes">
+<header class="cat-head">
+<h2>Assiettes</h2>
+<p>Salade mix, tomate, frites maison, boulgour, oignon rouge, carotte râpée, chou rouge, fromage blanc</p>
+</header>
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">L'assiette (1 viande)</span>
+<span class="dish-price">11 €</span>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Mix 3 viandes</span>
+<span class="dish-price">16 €</span>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Assiette chef</span>
+<span class="dish-price">13,50 €</span>
+</div>
+<p class="dish-desc">1 viande, œuf, bacon, cheddar fondu</p>
+</li>
+</ul>
+<p class="cat-note">Viandes au choix : kebab, maxicanto, cordon bleu, steak haché, steak boucher, poulet tikka, merguez, tenders, kefta maison.</p>
+
+<div class="cat-sub">
+<h3>Fried chicken &amp; tex mex</h3>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">Nuggets ×6</span><span class="dish-price">5 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Tenders ×3</span><span class="dish-price">6 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Chicken wings ×4</span><span class="dish-price">6 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Cheese jalapenos ×5</span><span class="dish-price">5 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Mozza stick ×5</span><span class="dish-price">6 €</span></div></li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Box chicken mix</span>
+<div class="dish-prices">
+<span><small>Seule</small>9,50 €</span>
+<span><small>Formule</small>12,50 €</span>
+</div>
+</div>
+<p class="dish-desc">5 nuggets, 2 tenders, 3 wings — formule : frites + boisson</p>
+</li>
+</ul>
+</div>
+</article>
+
+<article class="cat" id="tacos">
+<header class="cat-head">
+<h2>Tacos &amp; bowls</h2>
+<p>Compose selon tes goûts — tacos garnis de frites et sauce fromagère</p>
+</header>
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Tacos M — 1 viande</span>
+<div class="dish-prices"><span><small>Seul</small>7,50 €</span><span><small>Menu</small>10,50 €</span></div>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Tacos L — 2 viandes</span>
+<div class="dish-prices"><span><small>Seul</small>9,50 €</span><span><small>Menu</small>12,50 €</span></div>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Tacos XL — 3 viandes</span>
+<div class="dish-prices"><span><small>Seul</small>11,50 €</span><span><small>Menu</small>14,50 €</span></div>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Bowl — 1 viande</span>
+<span class="dish-price">10 €</span>
+</div>
+</li>
+</ul>
+<p class="cat-note">Viandes : kebab, steak haché, kefta maison, poulet mariné, merguez, tenders, maxicanto, cordon bleu.</p>
+</article>
+
+<article class="cat" id="panini">
+<header class="cat-head">
+<h2>Panini</h2>
+<p>Seul 7 € — Menu 10,50 € (frites + boisson)</p>
+</header>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">Raclette</span></div><p class="dish-desc">Steak haché, fromage raclette, sauce au choix</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Burger</span></div><p class="dish-desc">Steak haché, oignons, cornichons, cheddar, sauce burger</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Kebab</span></div><p class="dish-desc">Kebab, oignons, tomates, crudités, sauce au choix</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Orientale</span></div><p class="dish-desc">Merguez, légumes grillés, cheddar, sauce au choix</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Poulet</span></div><p class="dish-desc">Poulet mariné, légumes grillés, cheddar, sauce au choix</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Fromage</span></div><p class="dish-desc">Chèvre, boursin, raclette, cheddar, sauce au choix</p></li>
+</ul>
+</article>
+
+<article class="cat" id="salades">
+<header class="cat-head">
+<h2>Salades &amp; barquettes</h2>
+</header>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">César</span><span class="dish-price">8 €</span></div><p class="dish-desc">Salade mixte, tomate, oignon rouge, poulet pané, feta, croûtons, parmesan, sauce césar</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Kebab</span><span class="dish-price">9 €</span></div><p class="dish-desc">Salade mixte, tomate, oignon rouge, carotte râpée, choux rouge, fromage blanc, viande kebab, balsamique de grenade</p></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Végé</span><span class="dish-price">7 €</span></div><p class="dish-desc">Salade mixte, tomate, oignon rouge, carotte râpée, choux rouge, fromage blanc, viande kebab, balsamique de grenade</p></li>
+</ul>
+<div class="cat-sub">
+<h3>Barquettes</h3>
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Frites</span>
+<div class="dish-prices">
+<span><small>Petite</small>2 €</span>
+<span><small>Grande</small>4 €</span>
+</div>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Viande kebab</span>
+<div class="dish-prices">
+<span><small>Petite</small>4,50 €</span>
+<span><small>Grande</small>7,50 €</span>
+</div>
+</div>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Supplément</span>
+<div class="dish-prices">
+<span><small>Petite</small>1,50 €</span>
+<span><small>Grande</small>2 €</span>
+</div>
+</div>
+<p class="dish-desc">Sauce fromagère, cheddar ou emmental</p>
+</li>
+</ul>
+</div>
+</article>
+
+<article class="cat" id="extras">
+<header class="cat-head">
+<h2>Sauces &amp; suppléments</h2>
+<p>Toutes nos sauces et extras à 1 €</p>
+</header>
+<div class="cat-sub" style="margin-top:0;padding-top:0;border:0;">
+<h3>Incontournables</h3>
+<div class="tag-cloud">
+<span>Andalouse</span><span>Mayonnaise</span><span>Ketchup</span><span>Algérienne</span><span>Moutarde</span><span>Samouraï</span><span>Harissa</span>
+</div>
+</div>
+<div class="cat-sub">
+<h3>Burger &amp; tentation</h3>
+<div class="tag-cloud">
+<span>Biggy burger</span><span>Smash burger</span><span>Beef fumée</span><span>Poivre</span><span>Chili thaï</span><span>Brazil</span>
+</div>
+</div>
+<div class="cat-sub">
+<h3>Fait maison</h3>
+<div class="tag-cloud">
+<span>Blanche kebab</span><span>Blanche truffe</span><span>Mayo truffe</span>
+</div>
+</div>
+<div class="cat-sub">
+<h3>Suppléments — 1 €</h3>
+<div class="tag-cloud">
+<span>Cheddar</span><span>Œuf</span><span>Raclette</span><span>Chèvre</span><span>Boursin</span><span>Bacon</span><span>Jalapenos</span><span>La Vache qui rit</span>
+</div>
+</div>
+</article>
+
+<article class="cat" id="desserts">
+<header class="cat-head">
+<h2>Desserts &amp; menu enfant</h2>
+</header>
+<ul class="dish-list">
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Menu enfant</span>
+<span class="dish-price">6 €</span>
+</div>
+<p class="dish-desc">Kebab + frites ou 4 nuggets + frites, Capri-Sun, ketchup, mayo, jouet surprise</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Milkshake vanille</span>
+<span class="dish-price">3,50 €</span>
+</div>
+<p class="dish-desc">Toppings +1 € : fraise, banane, Kinder Bueno, Oreo, speculoos, coconut…</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Sundae vanille</span>
+<span class="dish-price">2,50 €</span>
+</div>
+<p class="dish-desc">Nappages et toppings +1 €</p>
+</li>
+<li class="dish">
+<div class="dish-line">
+<span class="dish-name">Tiramisu maison</span>
+<span class="dish-price">3,50 €</span>
+</div>
+<p class="dish-desc">Kinder Bueno, Caramel, Daim, Nutella, Kitkat, Speculoos, Dubai Choco Pistache…</p>
+</li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Tarte Daim</span><span class="dish-price">3,50 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Cheesecake Oreo</span><span class="dish-price">3,50 €</span></div></li>
+</ul>
+</article>
+
+<article class="cat" id="boissons">
+<header class="cat-head">
+<h2>Boissons &amp; alcools</h2>
+</header>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">Canette 33 cl</span><span class="dish-price">2 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Red Bull 25 cl</span><span class="dish-price">2,50 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Bouteille 1,25 L</span><span class="dish-price">3,50 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Bouteille 1,75 L</span><span class="dish-price">4 €</span></div></li>
+</ul>
+<p class="cat-note">Coca-Cola, Oasis Tropica, Tropico, Ice Tea Pêche, Sprite, Fanta</p>
+
+<div class="cat-sub">
+<h3>Bières</h3>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">Heineken 25 cl</span><span class="dish-price">2,50 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Leffe Blonde 33 cl</span><span class="dish-price">3 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Desperados 33 cl</span><span class="dish-price">4 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">8.6 Bavaria 50 cl</span><span class="dish-price">4 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Chouffe Blonde 33 cl</span><span class="dish-price">5 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Kastel Rouge 33 cl</span><span class="dish-price">5 €</span></div></li>
+</ul>
+</div>
+
+<div class="cat-sub">
+<h3>Vins — rouge, blanc, rosé</h3>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">Bouteille 70 cl</span><span class="dish-price">13 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Verre 12 cl</span><span class="dish-price">3,50 €</span></div></li>
+</ul>
+</div>
+
+<div class="cat-sub">
+<h3>Apéros &amp; digestifs</h3>
+<ul class="dish-list">
+<li class="dish"><div class="dish-line"><span class="dish-name">Raki, Ricard, Vodka, Martini, Whisky</span><span class="dish-price">5 €</span></div></li>
+<li class="dish"><div class="dish-line"><span class="dish-name">Jet 27, Baileys</span><span class="dish-price">4 €</span></div></li>
+</ul>
+</div>
+</article>
+
+</div>
+
+<div class="back-wrap">
+<a class="back" href="index.html">← Retour à l'accueil</a>
+</div>
+</main>
+</body>
+</html>

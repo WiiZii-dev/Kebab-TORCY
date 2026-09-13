@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 376" width="512" height="376">
+  <rect width="512" height="376" fill="#171937"/>
+  <defs>
+    <clipPath id="stack">
+      <rect x="0" y="78" width="512" height="298"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#stack)" fill="#f8b41e" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Black', sans-serif" font-weight="900" font-size="114" letter-spacing="-2" text-anchor="start">
+    <text x="4" y="360">LE KEBAB</text>
+    <text x="4" y="242">LE KEBAB</text>
+    <text x="4" y="124">LE KEBAB</text>
+  </g>
+</svg>
