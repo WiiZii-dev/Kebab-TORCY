@@ -16,10 +16,24 @@
 		else openNav();
 	}
 
+	function bindClick(el, handler) {
+		if (!el || el.dataset.ktNavBound === '1') return;
+		el.dataset.ktNavBound = '1';
+		el.addEventListener('click', handler, { passive: false });
+		el.addEventListener('keydown', function (event) {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				handler(event);
+			}
+		});
+	}
+
 	/* Sous-pages (menu, horaires, actualités) */
 	var toggle = document.querySelector('.kt-nav-toggle');
 	if (toggle) {
-		toggle.addEventListener('click', function () {
+		bindClick(toggle, function (event) {
+			event.preventDefault();
+			event.stopPropagation();
 			var open = !document.body.classList.contains('kt-nav-open');
 			if (open) openNav();
 			else closeNav();
@@ -27,7 +41,9 @@
 		});
 
 		document.querySelectorAll('.kt-site-header nav a').forEach(function (link) {
-			link.addEventListener('click', closeNav);
+			bindClick(link, function () {
+				closeNav();
+			});
 		});
 	}
 
@@ -51,7 +67,7 @@
 
 	openSelectors.forEach(function (sel) {
 		document.querySelectorAll(sel).forEach(function (el) {
-			el.addEventListener('click', function (event) {
+			bindClick(el, function (event) {
 				event.preventDefault();
 				event.stopPropagation();
 				openNav();
@@ -61,7 +77,7 @@
 
 	closeSelectors.forEach(function (sel) {
 		document.querySelectorAll(sel).forEach(function (el) {
-			el.addEventListener('click', function (event) {
+			bindClick(el, function (event) {
 				event.preventDefault();
 				event.stopPropagation();
 				closeNav();
@@ -79,15 +95,29 @@
 
 	canvasLinks.forEach(function (item) {
 		document.querySelectorAll(item.sel).forEach(function (el) {
-			el.addEventListener('click', function () {
+			var inner = el.querySelector('.et_pb_text_inner');
+			if (!inner) return;
+
+			var existing = inner.querySelector('a.kt-nav-link');
+			if (existing) {
+				existing.href = item.href;
+				bindClick(existing, function (event) {
+					event.stopPropagation();
+					closeNav();
+				});
+				return;
+			}
+
+			var link = document.createElement('a');
+			link.className = 'kt-nav-link';
+			link.href = item.href;
+			link.innerHTML = inner.innerHTML;
+			inner.innerHTML = '';
+			inner.appendChild(link);
+
+			bindClick(link, function (event) {
+				event.stopPropagation();
 				closeNav();
-				if (item.href.charAt(0) === '#') {
-					var dest = document.getElementById(item.href.slice(1));
-					if (dest) dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
-					else window.location.href = 'index.html' + item.href;
-				} else {
-					window.location.href = item.href;
-				}
 			});
 		});
 	});
