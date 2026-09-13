@@ -11,11 +11,6 @@
 		document.body.style.overflow = '';
 	}
 
-	function toggleNav() {
-		if (document.body.classList.contains('kt-nav-open')) closeNav();
-		else openNav();
-	}
-
 	function bindClick(el, handler) {
 		if (!el || el.dataset.ktNavBound === '1') return;
 		el.dataset.ktNavBound = '1';
@@ -28,8 +23,14 @@
 		});
 	}
 
+	function setToggleState(toggle, open) {
+		if (!toggle) return;
+		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+		toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+	}
+
 	/* Sous-pages (menu, horaires, actualités) */
-	var toggle = document.querySelector('.kt-nav-toggle');
+	var toggle = document.querySelector('.kt-site-header .kt-nav-toggle');
 	if (toggle) {
 		bindClick(toggle, function (event) {
 			event.preventDefault();
@@ -37,98 +38,72 @@
 			var open = !document.body.classList.contains('kt-nav-open');
 			if (open) openNav();
 			else closeNav();
-			toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+			setToggleState(toggle, open);
 		});
 
 		document.querySelectorAll('.kt-site-header nav a').forEach(function (link) {
 			bindClick(link, function () {
 				closeNav();
+				setToggleState(toggle, false);
 			});
 		});
 	}
 
 	document.addEventListener('keydown', function (event) {
-		if (event.key === 'Escape') closeNav();
+		if (event.key === 'Escape') {
+			closeNav();
+			document.querySelectorAll('.kt-nav-toggle, .kt-home-nav-toggle').forEach(function (btn) {
+				setToggleState(btn, false);
+			});
+		}
 	});
 
-	/* Accueil — liens menu section_0 (barre transparente) */
-	var homeMenu = document.querySelector('.et_pb_section_0_tb_header .et-menu.nav');
-	if (homeMenu) {
-		homeMenu.querySelectorAll('a[href]').forEach(function (link) {
-			bindClick(link, function (event) {
-				event.stopPropagation();
-			});
-		});
-	}
+	/* Accueil — logo + hamburger + overlay */
+	var homeSection = document.querySelector('.et_pb_section_0_tb_header');
+	if (homeSection) {
+		var menuWrap = homeSection.querySelector('.et_pb_menu__wrap');
+		var homeMenu = homeSection.querySelector('.et_pb_menu__menu');
+		var homeToggle = homeSection.querySelector('.kt-home-nav-toggle');
 
-	/* Accueil — canvas Divi (secours si présent) */
-	var canvas = document.getElementById('brl-mobile-canvas');
-	if (!canvas) return;
+		if (menuWrap && !homeToggle) {
+			homeToggle = document.createElement('button');
+			homeToggle.type = 'button';
+			homeToggle.className = 'kt-nav-toggle kt-home-nav-toggle';
+			homeToggle.setAttribute('aria-expanded', 'false');
+			homeToggle.setAttribute('aria-label', 'Ouvrir le menu');
+			homeToggle.innerHTML =
+				'<span class="kt-nav-toggle-bar"></span>' +
+				'<span class="kt-nav-toggle-bar"></span>' +
+				'<span class="kt-nav-toggle-bar"></span>';
+			menuWrap.appendChild(homeToggle);
+		}
 
-	var openSelectors = [
-		'.et_pb_icon_0_tb_header',
-		'.mobile_menu_bar',
-		'.et_pb_section_1_tb_header [data-interaction-trigger]'
-	];
-	var closeSelectors = [
-		'.et_pb_icon_1_tb_header',
-		'.et_pb_section_2_tb_header [data-interaction-trigger="4pr2kdqjl3"]'
-	];
-
-	openSelectors.forEach(function (sel) {
-		document.querySelectorAll(sel).forEach(function (el) {
-			bindClick(el, function (event) {
+		if (homeToggle) {
+			bindClick(homeToggle, function (event) {
 				event.preventDefault();
 				event.stopPropagation();
-				openNav();
+				var open = !document.body.classList.contains('kt-nav-open');
+				if (open) openNav();
+				else closeNav();
+				setToggleState(homeToggle, open);
 			});
-		});
-	});
+		}
 
-	closeSelectors.forEach(function (sel) {
-		document.querySelectorAll(sel).forEach(function (el) {
-			bindClick(el, function (event) {
-				event.preventDefault();
-				event.stopPropagation();
-				closeNav();
-			});
-		});
-	});
-
-	var canvasLinks = [
-		{ sel: '.et_pb_text_0_tb_header', href: '#concept' },
-		{ sel: '.et_pb_text_1_tb_header', href: 'menu.html' },
-		{ sel: '.et_pb_text_2_tb_header', href: 'horaires.html' },
-		{ sel: '.et_pb_text_3_tb_header', href: 'actualites.html' },
-		{ sel: '.et_pb_text_4_tb_header', href: 'recrutement.html' }
-	];
-
-	canvasLinks.forEach(function (item) {
-		document.querySelectorAll(item.sel).forEach(function (el) {
-			var inner = el.querySelector('.et_pb_text_inner');
-			if (!inner) return;
-
-			var existing = inner.querySelector('a.kt-nav-link');
-			if (existing) {
-				existing.href = item.href;
-				bindClick(existing, function (event) {
+		if (homeMenu) {
+			homeMenu.querySelectorAll('a[href]').forEach(function (link) {
+				bindClick(link, function (event) {
 					event.stopPropagation();
 					closeNav();
+					setToggleState(homeToggle, false);
 				});
-				return;
-			}
-
-			var link = document.createElement('a');
-			link.className = 'kt-nav-link';
-			link.href = item.href;
-			link.innerHTML = inner.innerHTML;
-			inner.innerHTML = '';
-			inner.appendChild(link);
-
-			bindClick(link, function (event) {
-				event.stopPropagation();
-				closeNav();
 			});
-		});
-	});
+
+			bindClick(homeMenu, function (event) {
+				if (event.target === homeMenu) {
+					closeNav();
+					setToggleState(homeToggle, false);
+				}
+			});
+		}
+	}
 })();
