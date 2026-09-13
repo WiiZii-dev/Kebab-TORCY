@@ -1,0 +1,24 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/assets/(.*\\.jfif)",
+      "headers": [
+        { "key": "Content-Type", "value": "image/jpeg" }
+      ]
+    },
+    {
+      "source": "/assets/(.*\\.otf)",
+      "headers": [
+        { "key": "Content-Type", "value": "font/otf" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}
