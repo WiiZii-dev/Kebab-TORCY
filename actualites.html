@@ -144,6 +144,25 @@ h1 {
 	background: #1877f2;
 	color: #fff;
 }
+.kt-feature-video {
+	max-width: 420px;
+	margin: 0 auto 44px;
+}
+.kt-feature-video-wrap {
+	border-radius: 20px;
+	overflow: hidden;
+	border: 2px solid rgba(245, 130, 32, .18);
+	box-shadow: 0 14px 32px rgba(232, 72, 26, .14);
+	background: #000;
+	aspect-ratio: 9 / 16;
+	line-height: 0;
+}
+.kt-feature-video-player {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 .offers-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -432,6 +451,15 @@ h1 {
 <a class="insta" href="https://www.instagram.com/kebab_torcy/" target="_blank" rel="noopener noreferrer">Instagram</a>
 <a class="fb" href="https://www.facebook.com/KebabPizzeriaDeTorcy/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Facebook</a>
 </div>
+<section class="kt-feature-video" aria-label="Vidéo actualité kebab torcy">
+<h2 class="section-title">En ce moment</h2>
+<div class="kt-feature-video-wrap">
+<video class="kt-feature-video-player" autoplay loop muted playsinline preload="auto" aria-label="Vidéo kebab torcy">
+<source src="assets/actualites-kebab-torcy.mov" type="video/quicktime" />
+<source src="assets/actualites-kebab-torcy.mov" type="video/mp4" />
+</video>
+</div>
+</section>
 <h2 class="section-title">Nos offres du moment</h2>
 <div class="offers-grid">
 <article class="offer-card">
@@ -693,6 +721,21 @@ h1 {
 	}, { passive: false });
 	window.addEventListener("resize", function () {
 		if (overlay.classList.contains("is-open")) fitImage();
+	});
+})();
+</script>
+<script>
+(function () {
+	document.querySelectorAll(".kt-feature-video-player").forEach(function (video) {
+		video.muted = true;
+		video.loop = true;
+		video.setAttribute("playsinline", "");
+		var play = function () {
+			var promise = video.play();
+			if (promise && promise.catch) promise.catch(function () {});
+		};
+		play();
+		video.addEventListener("ended", play);
 	});
 })();
 </script>
