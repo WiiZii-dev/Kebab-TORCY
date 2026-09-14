@@ -145,8 +145,14 @@ h1 {
 	color: #fff;
 }
 .kt-feature-video {
-	max-width: 420px;
 	margin: 0 auto 44px;
+}
+.kt-feature-video-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 24px;
+	max-width: 880px;
+	margin: 0 auto;
 }
 .kt-feature-video-wrap {
 	border-radius: 20px;
@@ -417,6 +423,7 @@ h1 {
 }
 @media (max-width: 760px) {
 	.offers-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+	.kt-feature-video-grid { grid-template-columns: 1fr; max-width: 420px; }
 }
 @media (max-width: 640px) {
 	#kt-reviews .kt-reviews-grid { grid-template-columns: 1fr; }
@@ -451,13 +458,20 @@ h1 {
 <a class="insta" href="https://www.instagram.com/kebab_torcy/" target="_blank" rel="noopener noreferrer">Instagram</a>
 <a class="fb" href="https://www.facebook.com/KebabPizzeriaDeTorcy/?locale=fr_FR" target="_blank" rel="noopener noreferrer">Facebook</a>
 </div>
-<section class="kt-feature-video" aria-label="Vidéo actualité kebab torcy">
+<section class="kt-feature-video" aria-label="Vidéos actualité kebab torcy">
 <h2 class="section-title">En ce moment</h2>
+<div class="kt-feature-video-grid">
 <div class="kt-feature-video-wrap">
-<video class="kt-feature-video-player" autoplay loop muted playsinline preload="auto" aria-label="Vidéo kebab torcy">
+<video class="kt-feature-video-player" autoplay loop muted playsinline preload="auto" aria-label="Vidéo kebab torcy 1">
 <source src="assets/actualites-kebab-torcy.mov" type="video/quicktime" />
 <source src="assets/actualites-kebab-torcy.mov" type="video/mp4" />
 </video>
+</div>
+<div class="kt-feature-video-wrap">
+<video class="kt-feature-video-player" autoplay loop muted playsinline preload="auto" aria-label="Vidéo kebab torcy 2">
+<source src="assets/actualites-kebab-torcy.mp4?v=2" type="video/mp4" />
+</video>
+</div>
 </div>
 </section>
 <h2 class="section-title">Nos offres du moment</h2>
