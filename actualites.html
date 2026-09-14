@@ -149,9 +149,9 @@ h1 {
 }
 .kt-feature-video-grid {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 24px;
-	max-width: 880px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 .kt-feature-video-wrap {
@@ -189,6 +189,21 @@ h1 {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+.offer-card--image-only {
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+}
+.offer-card--image-only img {
+	border-radius: 20px;
+	border: 2px solid rgba(245, 130, 32, .18);
+	box-shadow: 0 14px 32px rgba(232, 72, 26, .14);
+}
+.offers-grid--images {
+	max-width: 880px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .offer-card-body {
 	padding: 18px 20px 20px;
@@ -421,6 +436,9 @@ h1 {
 @media (max-width: 980px) {
 	#kt-reviews .kt-reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (max-width: 980px) {
+	.kt-feature-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; }
+}
 @media (max-width: 760px) {
 	.offers-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
 	.kt-feature-video-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -472,25 +490,21 @@ h1 {
 <source src="assets/actualites-kebab-torcy.mp4?v=2" type="video/mp4" />
 </video>
 </div>
+<div class="kt-feature-video-wrap">
+<video class="kt-feature-video-player" autoplay loop muted playsinline preload="auto" aria-label="Vidéo kebab torcy 3">
+<source src="assets/actualites-kebab-torcy-3.mov" type="video/quicktime" />
+<source src="assets/actualites-kebab-torcy-3.mov" type="video/mp4" />
+</video>
+</div>
 </div>
 </section>
 <h2 class="section-title">Nos offres du moment</h2>
-<div class="offers-grid">
-<article class="offer-card">
-<img src="assets/offre-menu-etudiant-kebab.jpg" alt="Menu étudiant — Kebab, frites et boisson à 6,50 €" width="720" height="1280" loading="eager" decoding="async" />
-<div class="offer-card-body">
-<h2>Menu étudiant kebab</h2>
-<p>Kebab + frites + boisson</p>
-<p class="offer-price">6,50 €</p>
-</div>
+<div class="offers-grid offers-grid--images">
+<article class="offer-card offer-card--image-only">
+<img src="assets/offre-menu-etudiant-kebab.jpg?v=2" alt="Menu étudiant kebab, frites et boisson à 6,50 €" width="720" height="1280" loading="eager" decoding="async" />
 </article>
-<article class="offer-card">
-<img src="assets/offre-menu-etudiant-tacos.jpg" alt="Menu étudiant — Tacos M et boisson à 7 €" width="720" height="1280" loading="eager" decoding="async" />
-<div class="offer-card-body">
-<h2>Menu étudiant tacos</h2>
-<p>Tacos M + boisson</p>
-<p class="offer-price">7 €</p>
-</div>
+<article class="offer-card offer-card--image-only">
+<img src="assets/offre-menu-etudiant-tacos.jpg?v=2" alt="Menu étudiant tacos M et boisson à 7 €" width="720" height="1280" loading="eager" decoding="async" />
 </article>
 </div>
 <article class="press-card">

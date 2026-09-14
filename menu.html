@@ -93,6 +93,38 @@ h1 {
 	margin: 0 auto;
 	opacity: .92;
 }
+.menu-student-offers {
+	margin-bottom: 48px;
+}
+.menu-student-offers h2 {
+	font-family: "Thunder Bold", Impact, Montserrat, sans-serif;
+	font-size: clamp(24px, 4vw, 36px);
+	text-transform: uppercase;
+	color: var(--red);
+	margin: 0 0 22px;
+	letter-spacing: .04em;
+	text-align: center;
+}
+.menu-student-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 24px;
+	max-width: 880px;
+	margin: 0 auto;
+}
+.menu-student-grid figure {
+	margin: 0;
+	border-radius: 20px;
+	overflow: hidden;
+	border: 3px solid var(--red);
+	box-shadow: 0 18px 40px rgba(232, 72, 26, .18);
+	background: var(--beige);
+}
+.menu-student-grid img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
 .menu-images {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -462,6 +494,9 @@ h1 {
 	color: var(--navy);
 	border-color: var(--red);
 }
+@media (max-width: 760px) {
+	.menu-student-grid { grid-template-columns: 1fr; max-width: 420px; }
+}
 @media (max-width: 600px) {
 	.cat { padding: 22px 18px 18px; }
 	.dish-line { grid-template-columns: 1fr; gap: 4px; }
@@ -492,6 +527,18 @@ h1 {
 <h1>Notre menu</h1>
 <p class="intro">Kebabs, burgers, tacos, bowls et plus — découvrez toute la carte de Kebab torcy.</p>
 </div>
+
+<section class="menu-student-offers" aria-label="Menus étudiants">
+<h2>Menus étudiants</h2>
+<div class="menu-student-grid">
+<figure>
+<img src="assets/offre-menu-etudiant-kebab.jpg?v=2" alt="Menu étudiant kebab, frites et boisson à 6,50 €" width="720" height="1280" loading="eager" decoding="async" />
+</figure>
+<figure>
+<img src="assets/offre-menu-etudiant-tacos.jpg?v=2" alt="Menu étudiant tacos M et boisson à 7 €" width="720" height="1280" loading="eager" decoding="async" />
+</figure>
+</div>
+</section>
 
 <section class="menu-images" aria-label="Carte menu en images">
 <figure class="menu-image" data-zoom-src="assets/menu-carte-principale.jpg" tabindex="0" role="button" aria-label="Agrandir la carte principale du menu">
